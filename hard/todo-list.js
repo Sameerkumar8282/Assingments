@@ -12,38 +12,44 @@
 
 class Todo {
   constructor() {
-    // It store the length of array.
-    this.length = 0;
-
-    // Object to store elements.
-    this.data = [];
+    this.todo = [];
   }
   add(str) {
-    this.data[this.length] = str;
-    this.length++;
-    return this.data;
+    return this.todo.push(str);
   }
 
   remove(index) {
-    if (index > -1) { // only splice array when item is found
-      this.data.splice(index, 1); // 2nd parameter means remove one item only
+    // if (index > -1) {
+    //   // only splice array when item is found
+    //   this.data.splice(index, 1); // 2nd parameter means remove one item only
+    // }
+    // return this.data;
+    let newArray = [];
+    for (let k = 0; k < this.todo.length; k++) {
+      if (k !== index) newArray.push(this.todo[k]);
     }
-    return this.data;
+    this.todo = newArray;
+
   }
 
   update(index, item) {
-    this.data.splice(index, 0, item);
+    if (index < this.todo.length) 
+    this.todo[index] = item;
   }
 
   get(indexOfTodo) {
-    return this.data[indexOfTodo];
+    if(indexOfTodo<this.todo.length)return this.todo[indexOfTodo];
+    return null;
   }
 
-      getAll() {
-    return this.data;
+  getAll() {
+    return this.todo;
   }
   clear() {
-    return (this.result = []);
+   let n = this.todo.length
+   for (let index = 0; index < n; index++) {
+    this.todo.pop()
+   }
   }
 }
 
