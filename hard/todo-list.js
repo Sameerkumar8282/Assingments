@@ -40,7 +40,7 @@ class Todo {
   }
 
       getAll() {
-    return this.data;
+    return this.data1;
   }
   clear() {
     return (this.result = []);
